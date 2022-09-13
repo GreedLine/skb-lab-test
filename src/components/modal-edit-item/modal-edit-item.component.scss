@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// TODO: Дублируется несколько раз, по-хорошему выносить в отдельную папку стилей и подключать к нужным компонентам.
+
+mat-form-field, button {
+  width: 100%;
+}
+

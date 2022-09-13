@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// TODO: Очень грубо переопределяю стили конкретно для этого проекта в целях экономии времени.
+// В проектах так делать нельзя, т.к. это ломает весь кит, но в условиях срочного выполнения тз - приемлимо.
+
+.mat-list-item-content{
+  display: inline !important;
+}
+
+.mat-list-item {
+  height: 60px !important;
+}

@@ -1,0 +1,24 @@
+  <h1 mat-dialog-title>Редактирование задачи</h1>
+  <div mat-dialog-content class="container">
+    <mat-form-field appearance="fill">
+      <mat-label>Заголовок</mat-label>
+      <input matInput [(ngModel)]="title">
+    </mat-form-field>
+<!--    Здесь могло бы быть уведомление на заполнение поля title, однако писать ещё свою реализацию touched -->
+<!--    Я не стал, слишком много расхода времени на внешний красивый вид, решил больше упора делать на функционал -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Описание задачи</mat-label>
+      <textarea matInput placeholder="Описание задачи..." [(ngModel)]="description"></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Выберите дату </mat-label>
+      <input matInput [min]="minDate" [matDatepicker]="picker" [(ngModel)]="date" disabled>
+      <mat-hint>ММ/ДД/ГГГГ</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="getData()" [disabled]="!isValid()">Добавить</button>
+  </div>

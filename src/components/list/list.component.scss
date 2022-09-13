@@ -1,0 +1,14 @@
+
+// TODO: Очень много подобных записей с классами. Обычно выносится в отдельные стили и подключается к компоненту.
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.accent {
+  background: #ffd740;
+}
+.warn{
+  background: #f44336;
+}

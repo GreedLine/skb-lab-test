@@ -1,0 +1,45 @@
+<ng-container [formGroup]="parentForm">
+  <ng-container formArrayName="items">
+    <mat-list>
+<!--      TODO: По идее весь код ниже должен уйти в компонент итема, т.к. list.component - просто обвязка, включающая в себя сетку и прочее.-->
+      <ng-container *ngFor="let item of items.controls; index as index;  let last = last; let first = first">
+        <mat-list-item [disabled]="item.value.complete" [ngClass]="
+        {'accent': validatorAccent(item.value.date) && !item.value.complete, 'warn': validatorWarn(item.value.date) && !item.value.complete}
+      ">
+          <div class="container">
+            <span class="container__title" (click)="readTodo(item.value)">{{item.value.title}}</span>
+            <div>
+              <span class="container__date" (click)="readTodo(item.value)">{{item.value.date}}</span>
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="completeTodo(index)">
+                  <mat-icon>check_circle_outline</mat-icon>
+                  <span>Закрыть задачу</span>
+                </button>
+                <button mat-menu-item (click)="editTodo(index)">
+                  <mat-icon>edit</mat-icon>
+                  <span>Редактировать задачу</span>
+                </button>
+                <button mat-menu-item [disabled]="first" (click)="moveTop(index)">
+                  <mat-icon>keyboard_arrow_up</mat-icon>
+                  <span>Поднять в списке</span>
+                </button>
+                <button mat-menu-item [disabled]="last" (click)="moveBottom(index)">
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                  <span>Опустить в списке</span>
+                </button>
+                <button mat-menu-item (click)="removeItem(index)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Удалить</span>
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-list>
+  </ng-container>
+</ng-container>
